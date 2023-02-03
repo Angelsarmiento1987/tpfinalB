@@ -74,3 +74,16 @@ align-items: center;
       
     }
     
+    .mostrarInfoAdicional{
+
+        background-color: grey;
+        width: 100vw;
+        height: 20Vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: sticky;
+        margin-bottom: 0px;
+        flex-direction: column;
+
+    }

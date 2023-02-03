@@ -3,12 +3,14 @@
 import './Navbar.css'
 import React, { useState } from 'react';
 import { Hero } from '../Hero/Hero';
+import { CardInfo } from '../CardInfo/CardInfo';
 
 const Navbar = () => {
 
     const [valor, setValor] = useState(''); //creo la variable VALOR que recibira lo que se escriba en el imput
     const [mostrarResultados, setmostrarResultados] = useState([]) //creo el array mostrarResultados donde se guardaran los datos obtenidps de la api
     const [mostrarResultados2, setmostrarResultados2] = useState([])
+    const[mostrarLocacion,setmostrarLocacion] = useState([])
 
     const buscarResultado = async () => {
 
@@ -31,9 +33,16 @@ const Navbar = () => {
 
         const respuesta2 = await fetch(URL2); //guardo en respuesta la llamada a la api
         const data2 = await respuesta2.json(); //guardo en data la conversion a json 
-        setmostrarResultados2(data2.results) //guardo en mostrarResultados la data
-        console.log(data2.exif.model)
-       
+        setmostrarResultados2(data2.exif) //guardo en mostrarResultados la data
+        setmostrarLocacion(data2.location)
+        console.log(data2)
+
+        
+       return(
+
+        <div className='contenedorImagen'>{data2.exif.model}</div>
+
+       )
 
 
      }
@@ -57,6 +66,12 @@ const Navbar = () => {
                
             
                 </div>
+                <div className='mostrarInfoAdicional'> {/*div para mostrar datos adicionales de las fotos*/ }
+
+                <p>Camara utilizada: {mostrarResultados2.model!=null? mostrarResultados2.model:`No hay info sobre la camara utilizada`}</p>
+                <p>Ubicacion: {mostrarLocacion.city!=null? mostrarLocacion.city:`no hay informacion sobre la locacion de la foto`}</p>
+
+                </div>
 
                 <div className='seccionFotos'>
                         <div className='contImagenes'>
@@ -76,18 +91,20 @@ const Navbar = () => {
 
 
                                  <div className='contenedorImagen'>
+
+
                                      <img className='imgTamaño' src= {elemento.urls.regular} alt="" />
                                     <button onClick={()=>buscarInfoFoto(elemento.id)}>Mas info</button> {/*boton q llama la funcion buscarinfofoto y le paso como parametro el identificador de la foto*/}
 
                                      <p>{elemento.user.location}</p>
-                                    <p>{elemento.id}</p>
+                                     
                                     
                                    
                             
                               
-                                     <p>{elemento.tags[0].title}</p> 
+                                     {/*<p>{elemento.tags[0].title}</p> 
                                     <p>{elemento.tags[1].title}</p>
-                                    <p>{elemento.tags[2].title}</p>
+                            <p>{elemento.tags[2].title}</p>*/}
                              
 
                                 </div>
@@ -96,12 +113,16 @@ const Navbar = () => {
      
                       </div>
                       </div>
+                     
+
+
                       </div>
                         )                                            
                         }
                         
 
                         export { Navbar }
+                        
 
 
                  
