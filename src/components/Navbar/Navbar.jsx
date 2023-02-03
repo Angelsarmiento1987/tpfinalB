@@ -11,6 +11,8 @@ const Navbar = () => {
     const [mostrarResultados, setmostrarResultados] = useState([]) //creo el array mostrarResultados donde se guardaran los datos obtenidps de la api
     const [mostrarResultados2, setmostrarResultados2] = useState([])
     const[mostrarLocacion,setmostrarLocacion] = useState([])
+    const[mostrarDivInfo, setmostrarDivInfo] = useState(false)
+    const[idCamara, setIdCamara]= useState()//variable creada para poder mostrar o no mas info en la foto clickeada
 
     const buscarResultado = async () => {
 
@@ -24,6 +26,7 @@ const Navbar = () => {
         setmostrarResultados(data.results) //guardo en mostrarResultados la data
         console.log(data)
 
+        setmostrarDivInfo(false)//para nuevas busquedas desactivo el contenedor de info
        
      }
 
@@ -36,13 +39,10 @@ const Navbar = () => {
         setmostrarResultados2(data2.exif) //guardo en mostrarResultados la data
         setmostrarLocacion(data2.location)
         console.log(data2)
-
+        setmostrarDivInfo(true) //cuando busco la info de la foto seteo en true para que se muestre el contenedor
+        setIdCamara(idFoto)
         
-       return(
-
-        <div className='contenedorImagen'>{data2.exif.model}</div>
-
-       )
+      
 
 
      }
@@ -66,12 +66,8 @@ const Navbar = () => {
                
             
                 </div>
-                <div className='mostrarInfoAdicional'> {/*div para mostrar datos adicionales de las fotos*/ }
-
-                <p>Camara utilizada: {mostrarResultados2.model!=null? mostrarResultados2.model:`No hay info sobre la camara utilizada`}</p>
-                <p>Ubicacion: {mostrarLocacion.city!=null? mostrarLocacion.city:`no hay informacion sobre la locacion de la foto`}</p>
-
-                </div>
+                
+               {/*mostrarDivInfo && <CardInfo  camara = {mostrarResultados2.model} locacion={mostrarLocacion.city}/>*/}
 
                 <div className='seccionFotos'>
                         <div className='contImagenes'>
@@ -90,16 +86,17 @@ const Navbar = () => {
 
 
 
-                                 <div className='contenedorImagen'>
+                                 <div className='contenedorImagen' id={elemento.id}>
 
 
-                                     <img className='imgTamaño' src= {elemento.urls.regular} alt="" />
-                                    <button onClick={()=>buscarInfoFoto(elemento.id)}>Mas info</button> {/*boton q llama la funcion buscarinfofoto y le paso como parametro el identificador de la foto*/}
-
-                                     <p>{elemento.user.location}</p>
-                                     
+                                     {idCamara!=elemento.id&&<img className='imgTamaño' src= {elemento.urls.regular} alt="" />} {/*cuando el id de la foto que se necesita mas info es distinto a al id del elemento la foto se muestra */}
                                     
-                                   
+
+                                     
+                                     {idCamara==elemento.id&&<p className='contInfo' id={elemento.id}>Camara utilizada: {mostrarResultados2.model!=null?mostrarResultados2.model:`Info no disponible`} <br /> Pais: {mostrarLocacion.country!=null?mostrarLocacion.country:`Info no disponible`} <br />Ciudad: {mostrarLocacion.city!=null?mostrarLocacion.city:`Info no disponible`}</p>} {/*utilizo el operador cortocircuito para indicarle que si el identificador de busqueda de mas info coincide con el del div que lo muestre */}
+                                    
+                                     <button onClick={()=>buscarInfoFoto(elemento.id)}>Mas info</button> {/*boton q llama la funcion buscarinfofoto y le paso como parametro el identificador de la foto*/}
+                                     {/*<p>{elemento.user.location}</p>*/}
                             
                               
                                      {/*<p>{elemento.tags[0].title}</p> 

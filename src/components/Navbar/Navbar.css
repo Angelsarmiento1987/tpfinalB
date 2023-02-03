@@ -87,3 +87,18 @@ align-items: center;
         flex-direction: column;
 
     }
+
+    .contInfo{
+
+        max-width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        object-position: center;
+        background-color: grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.4rem;
+
+
+    }
