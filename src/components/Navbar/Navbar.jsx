@@ -16,11 +16,25 @@ const Navbar = () => {
     const[mostrarDivInfo, setmostrarDivInfo] = useState(false)
     const[idCamara, setIdCamara]= useState()//variable creada para poder mostrar o no mas info en la foto clickeada
      const[page, setPage] = useState(1) //variable para scroll de pagina
+     const[valorRender, setValorRender] = useState(1)
+     const[mostrarResultados3, setMostrarResultados3] = useState([])
 
-    const buscarResultado = async () => {
+    const buscarResultado = async (valorTag) => {
 
-        const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8' //cargo apikey 
-        const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${valor}&per_page=20` //cargo url de la api
+       
+
+        let consulta = valor //guardo el valor en la variable local de esta funcion llamda consulta
+
+        if(valorTag!=null){ //pregunto si el parametro de la funcion es distinto a null que lo cargue en la variable consulta sino que no haga nada
+            consulta = valorTag
+            
+        }
+
+        console.log("el valor de busqueda es:",consulta)
+
+        //const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8' //cargo apikey 1ra cuenta 
+        const apikey =`pdY10x4pUEmSLho3aKHBA3omst6rQ83qP_WxHymqs40` //apikey 2da cuenta
+        const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${consulta}&per_page=20` //cargo url de la api
         
         
     
@@ -34,6 +48,8 @@ const Navbar = () => {
      }
 
      const buscarInfoFoto = async (idFoto) => { 
+
+
 
         const URL2 = `https://api.unsplash.com/photos/${idFoto}/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8`
 
@@ -77,6 +93,36 @@ const Navbar = () => {
         
 
      },[page])
+
+
+     /*funcion RANDOM*/ 
+     
+   useEffect(()=>{
+
+    const randomFunc = async () => {
+        
+
+        const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8'
+        const URL = `https://api.unsplash.com/photos/random/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8&count=10`
+        /*const URL = `https://api.unsplash.com/photos/random/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8`*/
+        /*const URL = `https://api.unsplash.com/search/photos/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8&query=gato&per_page=100page=5/`*/
+        const respuesta = await fetch(URL);
+        const data = await respuesta.json();
+        setMostrarResultados3(data)
+        console.log(data)
+       
+        setValorRender(valorRender + 1)
+        console.log("el valor de render es de:", valorRender)
+        
+      
+        
+    
+             }
+
+            randomFunc()
+
+
+                },[]) //no le paso ningun parametro para que solo se ejecute una vez al iniciar la app
 
 
 
@@ -131,9 +177,9 @@ const Navbar = () => {
                                      {/*<p>{elemento.user.location}</p>*/}
                             
                               
-                                     {/*<p>{elemento.tags[0].title}</p> 
-                                    <p>{elemento.tags[1].title}</p>
-                            <p>{elemento.tags[2].title}</p>*/}
+                                         <a className='tags' onClick={()=>buscarResultado(elemento.tags[0].title)}  href="#">{elemento.tags[0].title}</a>
+                                         <a className='tags' onClick={()=>buscarResultado(elemento.tags[1].title)} href="#">{elemento.tags[1].title}</a>     
+                                        <a className='tags' onClick={()=>buscarResultado(elemento.tags[2].title)} href="#">{elemento.tags[2].title}</a>
                              
 
                                 </div>
@@ -145,9 +191,53 @@ const Navbar = () => {
                      
                             </InfiniteScroll>
 
+
+
+                            {valorRender==2&& //solo se hace visible este render cuando valorRender esta establecido en 2 para darle tiempo a la funcion random a ejecutarse
+
+                                <div className='contRandom'>
+                            
+                            <div className='contImagenes'>
+                {valorRender>1 &&
+                mostrarResultados3.map((elemento, indice) =>{
+                    return(
+
+
+                         <div key={elemento.id} className='contenedorImagen'>
+                              <img className='imgTamaño' src= {elemento.urls.regular} alt="" />
+                              
+                            
+                              
+                           {/* <p>{elemento.tags[0].title}</p> 
+                             <p>{elemento.tags[1].title}</p>
+                             <p>{elemento.tags[2].title}</p>*/}
+                             
+
+                        </div>
+
+                       
+
+                     )
+
+
+                })
+
+
+                 }
+
+                 
+
+            </div>
+            </div>
+     
+                            }
+
+
+
                       </div>
                         )                                            
                         }
+
                         
 
                         export { Navbar }

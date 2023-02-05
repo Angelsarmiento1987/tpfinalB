@@ -108,3 +108,18 @@ align-items: center;
         display: flex;
         justify-content: center;
     }
+
+    .contRandom{
+
+        margin-left: 1rem;
+        margin-right: 1rem;
+      
+       
+    }
+
+    .tags{
+
+        color: red;
+        padding: 0.2rem;
+
+    }
