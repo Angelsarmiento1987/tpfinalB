@@ -1,9 +1,11 @@
 
 /*creacion del componente Navbar con su input para buscar la imagen */
 import './Navbar.css'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Hero } from '../Hero/Hero';
 import { CardInfo } from '../CardInfo/CardInfo';
+import InfiniteScroll from "react-infinite-scroll-component"
+
 
 const Navbar = () => {
 
@@ -13,6 +15,7 @@ const Navbar = () => {
     const[mostrarLocacion,setmostrarLocacion] = useState([])
     const[mostrarDivInfo, setmostrarDivInfo] = useState(false)
     const[idCamara, setIdCamara]= useState()//variable creada para poder mostrar o no mas info en la foto clickeada
+     const[page, setPage] = useState(1) //variable para scroll de pagina
 
     const buscarResultado = async () => {
 
@@ -48,6 +51,32 @@ const Navbar = () => {
      }
 
 
+     /*funcion para scroll infinito*/
+     
+     
+     useEffect( () =>{
+        
+        async function cambiarPagina(){
+            
+        const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8'
+        const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${valor}&per_page=20&page=${page}`
+        /*const URL = `https://api.unsplash.com/photos/random/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8`*/
+        /*const URL = `https://api.unsplash.com/search/photos/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8&query=gato&per_page=100page=5/`*/
+        const respuesta = await fetch(URL);
+        const data = await respuesta.json();
+        setmostrarResultados((prevResultados)=> prevResultados.concat(data.results)) //concateno los nuevos resultados con los anteriores
+        console.log(data)
+       console.log(page)
+       console.log("elvalor de page es",page)
+
+       
+
+        }
+
+        cambiarPagina()
+        
+
+     },[page])
 
 
 
@@ -68,6 +97,9 @@ const Navbar = () => {
                 </div>
                 
                {/*mostrarDivInfo && <CardInfo  camara = {mostrarResultados2.model} locacion={mostrarLocacion.city}/>*/}
+
+                <InfiniteScroll className='scroll' dataLength={mostrarResultados.length} hasMore={true} next={()=> setPage(page + 1)}>
+
 
                 <div className='seccionFotos'>
                         <div className='contImagenes'>
@@ -111,7 +143,7 @@ const Navbar = () => {
                       </div>
                       </div>
                      
-
+                            </InfiniteScroll>
 
                       </div>
                         )                                            
