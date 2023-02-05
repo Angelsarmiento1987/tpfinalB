@@ -23,12 +23,13 @@ const Navbar = () => {
 
        
 
-        let consulta = valor //guardo el valor en la variable local de esta funcion llamda consulta
+        let consulta = valor //guardo el valor del search en la variable local de esta funcion llamda consulta
 
         if(valorTag!=null){ //pregunto si el parametro de la funcion es distinto a null que lo cargue en la variable consulta sino que no haga nada
             consulta = valorTag
             
         }
+        setValor(consulta)
 
         console.log("el valor de busqueda es:",consulta)
 
@@ -74,7 +75,8 @@ const Navbar = () => {
         
         async function cambiarPagina(){
             
-        const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8'
+        //const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8' //apikey 1ra cuenta
+        const apikey =`pdY10x4pUEmSLho3aKHBA3omst6rQ83qP_WxHymqs40` //apikey 2da cuenta
         const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${valor}&per_page=20&page=${page}`
         /*const URL = `https://api.unsplash.com/photos/random/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8`*/
         /*const URL = `https://api.unsplash.com/search/photos/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8&query=gato&per_page=100page=5/`*/
@@ -177,8 +179,8 @@ const Navbar = () => {
                                      {/*<p>{elemento.user.location}</p>*/}
                             
                               
-                                         <a className='tags' onClick={()=>buscarResultado(elemento.tags[0].title)}  href="#">{elemento.tags[0].title}</a>
-                                         <a className='tags' onClick={()=>buscarResultado(elemento.tags[1].title)} href="#">{elemento.tags[1].title}</a>     
+                                         <a className='tags' onClick={()=>buscarResultado(elemento.tags[0].title)}  href="#">{elemento.tags[0].title},</a>
+                                         <a className='tags' onClick={()=>buscarResultado(elemento.tags[1].title)} href="#">{elemento.tags[1].title},</a>     
                                         <a className='tags' onClick={()=>buscarResultado(elemento.tags[2].title)} href="#">{elemento.tags[2].title}</a>
                              
 

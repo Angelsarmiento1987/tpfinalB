@@ -119,7 +119,8 @@ align-items: center;
 
     .tags{
 
-        color: red;
-        padding: 0.2rem;
+        color: #1a6884 ;
+        padding: 0.1rem;
+        text-decoration: none;
 
     }
