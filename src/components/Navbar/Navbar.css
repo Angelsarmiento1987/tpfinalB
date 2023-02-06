@@ -84,12 +84,10 @@ align-items: center;
         object-fit: cover;
         object-position: center;
         border-radius: 10px;
-        transition: 1s;
+       
       
     }
-    .imgTamaño:hover{
-        transform: scale(1.02);
-    }
+   
     
  
 

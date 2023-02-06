@@ -45,6 +45,7 @@ const Navbar = () => {
         console.log(data)
 
         setmostrarDivInfo(false)//para nuevas busquedas desactivo el contenedor de info
+        setValorRender(1)//para ocultar div de RANDOM
        
      }
 
