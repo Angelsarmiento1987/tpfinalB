@@ -35,7 +35,7 @@ const Navbar = () => {
 
         //const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8' //cargo apikey 1ra cuenta 
         const apikey =`pdY10x4pUEmSLho3aKHBA3omst6rQ83qP_WxHymqs40` //apikey 2da cuenta
-        const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${consulta}&per_page=20` //cargo url de la api
+        const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${consulta}&per_page=30` //cargo url de la api
         
         
     
@@ -77,7 +77,7 @@ const Navbar = () => {
             
         //const apikey = 'ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8' //apikey 1ra cuenta
         const apikey =`pdY10x4pUEmSLho3aKHBA3omst6rQ83qP_WxHymqs40` //apikey 2da cuenta
-        const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${valor}&per_page=20&page=${page}`
+        const URL = `https://api.unsplash.com/search/photos/?client_id=${apikey}&query=${valor}&per_page=30&page=${page}`
         /*const URL = `https://api.unsplash.com/photos/random/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8`*/
         /*const URL = `https://api.unsplash.com/search/photos/?client_id=ZGkF2bxJelum8E2h6-UzcLmpaa-rp6GX7cwmwiPF9u8&query=gato&per_page=100page=5/`*/
         const respuesta = await fetch(URL);
@@ -175,7 +175,7 @@ const Navbar = () => {
                                      
                                      {idCamara==elemento.id&&<p className='contInfo' id={elemento.id}>Camara utilizada: {mostrarResultados2.model!=null?mostrarResultados2.model:`Info no disponible`} <br /> Pais: {mostrarLocacion.country!=null?mostrarLocacion.country:`Info no disponible`} <br />Ciudad: {mostrarLocacion.city!=null?mostrarLocacion.city:`Info no disponible`}</p>} {/*utilizo el operador cortocircuito para indicarle que si el identificador de busqueda de mas info coincide con el del div que lo muestre */}
                                     
-                                     <button onClick={()=>buscarInfoFoto(elemento.id)}>Mas info</button> {/*boton q llama la funcion buscarinfofoto y le paso como parametro el identificador de la foto*/}
+                                     <button className='btnInfo' onClick={()=>buscarInfoFoto(elemento.id)}>Mas info</button> {/*boton q llama la funcion buscarinfofoto y le paso como parametro el identificador de la foto*/}
                                      {/*<p>{elemento.user.location}</p>*/}
                             
                               
