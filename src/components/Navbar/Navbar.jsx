@@ -13,6 +13,8 @@ const Navbar = () => {
     const [mostrarResultados, setmostrarResultados] = useState([]) //creo el array mostrarResultados donde se guardaran los datos obtenidps de la api
     const [mostrarResultados2, setmostrarResultados2] = useState([])
     const[mostrarLocacion,setmostrarLocacion] = useState([])
+    const[mostrarUser, setMostrarUser] = useState([])
+    const[mostrarLink, setMostrarLink] = useState([])
     const[mostrarDivInfo, setmostrarDivInfo] = useState(false)
     const[idCamara, setIdCamara]= useState()//variable creada para poder mostrar o no mas info en la foto clickeada
      const[page, setPage] = useState(1) //variable para scroll de pagina
@@ -59,6 +61,8 @@ const Navbar = () => {
         const data2 = await respuesta2.json(); //guardo en data la conversion a json 
         setmostrarResultados2(data2.exif) //guardo en mostrarResultados la data
         setmostrarLocacion(data2.location)
+        setMostrarUser(data2.user)
+        setMostrarLink(data2.links)
         console.log(data2)
         setmostrarDivInfo(true) //cuando busco la info de la foto seteo en true para que se muestre el contenedor
         setIdCamara(idFoto)
@@ -174,7 +178,7 @@ const Navbar = () => {
                                     
 
                                      
-                                     {idCamara==elemento.id&&<p className='contInfo' id={elemento.id}>Camara utilizada: {mostrarResultados2.model!=null?mostrarResultados2.model:`Info no disponible`} <br /> Pais: {mostrarLocacion.country!=null?mostrarLocacion.country:`Info no disponible`} <br />Ciudad: {mostrarLocacion.city!=null?mostrarLocacion.city:`Info no disponible`}</p>} {/*utilizo el operador cortocircuito para indicarle que si el identificador de busqueda de mas info coincide con el del div que lo muestre */}
+                                     {idCamara==elemento.id&&<p className='contInfo' id={elemento.id}>Camara utilizada: {mostrarResultados2.model!=null?mostrarResultados2.model:`Info no disponible`} <br /> Pais: {mostrarLocacion.country!=null?mostrarLocacion.country:`Info no disponible`} <br />Ciudad: {mostrarLocacion.city!=null?mostrarLocacion.city:`Info no disponible`} <br />Foto en Unsplash de: {mostrarUser.name!=null?mostrarUser.name:`Info no disponible`} <br /><a href={mostrarLink.html} target="_blank"><button className='btnDownload'>Download</button></a></p>} {/*utilizo el operador cortocircuito para indicarle que si el identificador de busqueda de mas info coincide con el del div que lo muestre */}
                                     
                                      <button className='btnInfo' onClick={()=>buscarInfoFoto(elemento.id)}>Mas info</button> {/*boton q llama la funcion buscarinfofoto y le paso como parametro el identificador de la foto*/}
                                      {/*<p>{elemento.user.location}</p>*/}
