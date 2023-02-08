@@ -176,6 +176,17 @@ align-items: center;
 
     }
 
+    .etiqUser{
+
+        text-decoration: none;
+        color: #1a6884;
+        font-size: 1.3rem;
+        
+    }
+    .etiqUser:hover{
+        color: #ff9426;
+    }
+
     @media(max-width:1025px){
 
         .contImagenes{
