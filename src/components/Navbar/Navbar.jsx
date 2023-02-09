@@ -21,6 +21,7 @@ const Navbar = () => {
      const[page, setPage] = useState(1) //variable para scroll de pagina
      const[valorRender, setValorRender] = useState(1)
      const[mostrarResultados3, setMostrarResultados3] = useState([])
+     const[busquedaError, setBusquedaError] = useState(1)
 
     const buscarResultado = async (valorTag) => {
 
@@ -49,6 +50,7 @@ const Navbar = () => {
 
         setmostrarDivInfo(false)//para nuevas busquedas desactivo el contenedor de info
         setValorRender(1)//para ocultar div de RANDOM
+        data.results.length==0?setBusquedaError(0):setBusquedaError(1) //seteo de la variable busquedaError, para cuando se ingresa una palabra que no devuelve ningun objeto se active el div que indica que la busqueda es inexistente
        
      }
 
@@ -158,7 +160,7 @@ const Navbar = () => {
 
                 <div className='seccionFotos'>
                         <div className='contImagenes'>
-                        {
+                        {mostrarResultados.length!=0&& //para generar el mapeo y el proceso subsiguiente antes pregunto si la busqueda genero un array o no
                         mostrarResultados.map((elemento, indice) =>{//deberia ir aca la funcion q cargue por id la api
 
                               
@@ -196,6 +198,11 @@ const Navbar = () => {
                       
      
                       </div>
+
+                      {busquedaError==0 && //si la variable busqueda error esta seteada en 0 significa que no se obtuvo resultado en la busqueda por la palabra ingresada y por lo tanto envio el mensaje de error
+                      <div>
+                              <h1>SU BUSQUEDA NO HA PRODUCIDO RESULTADOS</h1>
+                             </div>}
                       </div>
                      
                             </InfiniteScroll>
