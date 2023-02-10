@@ -4,7 +4,10 @@ import './Navbar.css'
 import React, { useEffect, useState } from 'react';
 import { Hero } from '../Hero/Hero';
 import { CardInfo } from '../CardInfo/CardInfo';
-import InfiniteScroll from "react-infinite-scroll-component" //libreria importada para el infinite scroll
+import InfiniteScroll from "react-infinite-scroll-component" ;//libreria importada para el infinite scroll
+import { FaRobot } from 'react-icons/fa';
+import fotoError from './interrogacion.jpg';
+
 
 
 const Navbar = () => {
@@ -200,8 +203,9 @@ const Navbar = () => {
                       </div>
 
                       {busquedaError==0 && //si la variable busqueda error esta seteada en 0 significa que no se obtuvo resultado en la busqueda por la palabra ingresada y por lo tanto envio el mensaje de error
-                      <div>
-                              <h1>SU BUSQUEDA NO HA PRODUCIDO RESULTADOS</h1>
+                      <div className='contError'>
+                              <h1> <FaRobot />  SU BUSQUEDA NO HA PRODUCIDO RESULTADOS</h1>
+                              <img className='fotoError' src={fotoError} alt="" />
                              </div>}
                       </div>
                      

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { Navbar } from './components/Navbar/Navbar';
-import { Hero } from './components/Hero/Hero';
+
 
 
 
@@ -15,7 +15,7 @@ root.render(
     
     <App />
     <Navbar />
-    <Hero />
+
   </React.StrictMode>
 );
 

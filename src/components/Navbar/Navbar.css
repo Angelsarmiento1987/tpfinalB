@@ -75,6 +75,11 @@ align-items: center;
     
     
     }
+
+    .contenedorImagen{
+        width: 100%;
+        
+    }
     
     
     
@@ -104,7 +109,7 @@ align-items: center;
         flex-direction: column;
         padding: 0.4rem;
         border-radius: 10px;
-        background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='40' height='40' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(135)'%3E%3Crect width='100%25' height='100%25' fill='rgba(0, 178, 210,1)'/%3E%3Ccircle cx='0' cy='20' r='1' fill='%231a202c'/%3E%3Ccircle cx='40' cy='20' r='1' fill='%231a202c'/%3E%3Cpath d='m 19 19.5 h2 v1 h-2z' fill='%23ecc94b'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E ");
+       /* background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='40' height='40' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(135)'%3E%3Crect width='100%25' height='100%25' fill='rgba(0, 178, 210,1)'/%3E%3Ccircle cx='0' cy='20' r='1' fill='%231a202c'/%3E%3Ccircle cx='40' cy='20' r='1' fill='%231a202c'/%3E%3Cpath d='m 19 19.5 h2 v1 h-2z' fill='%23ecc94b'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E ");*/
         background-color: wheat;
         line-height: 1.5rem;
         color: black;
@@ -187,6 +192,19 @@ align-items: center;
         color: #ff9426;
     }
 
+    .contError{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center ;
+        align-items: center;
+
+    }
+    .fotoError{
+        width: 50%;
+        border-radius: 20px;
+    }
+
     @media(max-width:1025px){
 
         .contImagenes{
@@ -195,6 +213,48 @@ align-items: center;
             align-items: center;
             flex-direction: column;
         }
+        .contSecund{
+         width: 40%;
+         
+        }
+        .contInfo{
+            font-size: 3rem;
+            line-height: 4rem;
+        }
+        
+        .etiqUser{
+            font-size: 3rem;
+        }
+        .btnDownload{
 
+           font-size: 2rem;
+        }
+
+    }
+
+    @media(max-width:767px){
+
+        .contImagenes{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .contSecund{
+         width: 65%;
+         
+        }
+        .contInfo{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+        .etiqUser{
+            font-size: 1.5rem;
+        }
+        .btnDownload{
+
+           font-size: 1rem;
+        }
+     
 
     }
