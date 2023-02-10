@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/tpfinalB/static/css/main.d906b6ee.css",
-    "main.js": "/tpfinalB/static/js/main.5e054151.js",
+    "main.css": "/tpfinalB/static/css/main.6aee30d0.css",
+    "main.js": "/tpfinalB/static/js/main.979426c5.js",
     "static/media/interrogacion.jpg": "/tpfinalB/static/media/interrogacion.bd431b024b6460a24c8b.jpg",
     "index.html": "/tpfinalB/index.html",
-    "main.d906b6ee.css.map": "/tpfinalB/static/css/main.d906b6ee.css.map",
-    "main.5e054151.js.map": "/tpfinalB/static/js/main.5e054151.js.map"
+    "main.6aee30d0.css.map": "/tpfinalB/static/css/main.6aee30d0.css.map",
+    "main.979426c5.js.map": "/tpfinalB/static/js/main.979426c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.d906b6ee.css",
-    "static/js/main.5e054151.js"
+    "static/css/main.6aee30d0.css",
+    "static/js/main.979426c5.js"
   ]
 }
