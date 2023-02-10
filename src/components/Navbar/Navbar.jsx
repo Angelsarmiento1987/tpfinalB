@@ -204,7 +204,7 @@ const Navbar = () => {
 
                       {busquedaError==0 && //si la variable busqueda error esta seteada en 0 significa que no se obtuvo resultado en la busqueda por la palabra ingresada y por lo tanto envio el mensaje de error
                       <div className='contError'>
-                              <h1> <FaRobot />  SU BUSQUEDA NO HA PRODUCIDO RESULTADOS</h1>
+                              <h1> <FaRobot className='iconoRobot' />  SU BUSQUEDA NO HA PRODUCIDO RESULTADOS</h1>
                               <img className='fotoError' src={fotoError} alt="" />
                              </div>}
                       </div>

@@ -205,6 +205,9 @@ align-items: center;
         border-radius: 20px;
     }
 
+   
+   
+
     @media(max-width:1025px){
 
         .contImagenes{
@@ -254,6 +257,10 @@ align-items: center;
         .btnDownload{
 
            font-size: 1rem;
+        }
+        .fotoError{
+
+            width: 100%;
         }
      
 
