@@ -26,4 +26,4 @@ Diseño:
         "gh-pages": "^5.0.0"
       }
       
-      
+Nota: Tanto la posibilidad de consultar el usuario de la foto como el linkeo para acceder a la descarga en UNSPLASH de la misma, fueron sugeridos por los administradores de la API de UNSPLASH para poder pasar la app a produccion, ya que de otra forma la app solo cuenta con 50 solicitudes por hora a la API. De todas formas a pesar de estos cambios realizados aun no fue posible pasar la APP de DEMO a PRODUCCION.
