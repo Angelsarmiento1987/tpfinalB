@@ -4,9 +4,9 @@ Esta App esta diseñada como trabajo practico final de la primera parte de la Di
 Las caracteristicas de la APP son:
 - Busqueda de imagenes a partir de una palabra clave.
 - Seccion de imagenes RANDOM al iniciar la APP
--Cada busqueda ofrece una serie de fotos las cuales contaran con acceso a informacion extra como: Camara utilizada, Ubicacion, Nombre del usuario que saco la foto, y un link que nos lleva a poder descargar la foto directamente desde la pagina de UNSPLASH.
--La app incluye SCROLL INFINITO cuando nos muestra las imagenes asociadas a la palabra clave.
--Cada imagen cuenta con sus respectivas etiquetas o TAGS que pueden utilizarse para realizar nuevas busquedas de imagenes a partir de estas etiquetas.
+- Cada busqueda ofrece una serie de fotos las cuales contaran con acceso a informacion extra como: Camara utilizada, Ubicacion, Nombre del usuario que saco la foto, y un link que nos lleva a poder descargar la foto directamente desde la pagina de UNSPLASH.
+- La app incluye SCROLL INFINITO cuando nos muestra las imagenes asociadas a la palabra clave.
+- Cada imagen cuenta con sus respectivas etiquetas o TAGS que pueden utilizarse para realizar nuevas busquedas de imagenes a partir de estas etiquetas.
 
 Diseño:
 
